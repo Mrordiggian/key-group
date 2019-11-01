@@ -3,11 +3,11 @@ import {getNewPartPosts, getPosts} from "../Redux/postsReducers";
 import {connect} from "react-redux";
 
 
-const Posts = ({pertOfPosts, getPosts, getNewPartPosts}) => {
+const Posts = ({posts, pertOfPosts, getPosts, getNewPartPosts}) => {
     useEffect(
-        () => {
+          () => {
             getPosts()
-        }, []
+        }, [getPosts]
     )
 
     function populate() {
@@ -20,6 +20,7 @@ const Posts = ({pertOfPosts, getPosts, getNewPartPosts}) => {
     </div>
 }
 const mapStateToProps = (state) => ({
+    posts: state.posts.posts,
     pertOfPosts: state.posts.pertOfPosts
 })
 
