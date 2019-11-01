@@ -18,3 +18,9 @@
     top: 15px
 
 }
+.login {
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+
+}

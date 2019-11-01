@@ -10,6 +10,7 @@ const Header = ({logout, isAuth}) => {
             <NavLink to='/posts'>Posts</NavLink>
             <NavLink to='/profile'>Profile</NavLink>
         {isAuth && <span onClick={logout} className={style.logout}>Logout</span>}
+        {!isAuth && <NavLink className={style.login} to={'/login'}>Login</NavLink>}
         </div>
 
 
