@@ -20,6 +20,7 @@ const postsReducers = (state = initialState, action) => {
             }
         case SET_NEW_PART_POSTS:
             if(state.counter > state.posts.length ) return state
+            debugger
             return {
                 ...state,
                 counter: (state.counter + 10),

@@ -3,25 +3,29 @@ import {getNewPartPosts, getPosts} from "../Redux/postsReducers";
 import {connect} from "react-redux";
 
 
-const Posts = ({posts, pertOfPosts, getPosts, getNewPartPosts}) => {
+const Posts = ({pertOfPosts, getPosts, getNewPartPosts}) => {
     useEffect(
           () => {
             getPosts()
         }, [getPosts]
     )
-
-    function populate() {
-            let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
-            if (windowRelativeBottom < document.documentElement.clientHeight + 100) {getNewPartPosts()};
-    }
-    window.addEventListener('scroll', populate)
+    useEffect(
+        () => {
+            function populate() {
+                let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+                if (windowRelativeBottom < document.documentElement.clientHeight + 100) {getNewPartPosts()};
+            }
+            window.addEventListener('scroll', populate)
+            return () => window.removeEventListener('scroll', populate)
+        }, []
+    )
 
     return <div className={'posts'}>
         {pertOfPosts && pertOfPosts.map(p => <Post key={p.id} title={p.title} body={p.body}/>)}
+
     </div>
 }
 const mapStateToProps = (state) => ({
-    posts: state.posts.posts,
     pertOfPosts: state.posts.pertOfPosts
 })
 
