@@ -15,6 +15,7 @@ const Posts = ({posts, pertOfPosts, getPosts, getNewPartPosts}) => {
             if (windowRelativeBottom < document.documentElement.clientHeight + 100) {getNewPartPosts()};
     }
     window.addEventListener('scroll', populate)
+
     return <div className={'posts'}>
         {pertOfPosts && pertOfPosts.map(p => <Post key={p.id} title={p.title} body={p.body}/>)}
     </div>

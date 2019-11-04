@@ -16,10 +16,10 @@ const postsReducers = (state = initialState, action) => {
                 ...state,
                 posts: action.posts,
                 pertOfPosts: action.posts.slice(0, 19),
-                counter: 9
+                counter: 0
             }
         case SET_NEW_PART_POSTS:
-            if(state.counter === state.posts.length - 1 || state.counter > state.posts.length - 1) return state
+            if(state.counter > state.posts.length ) return state
             return {
                 ...state,
                 counter: (state.counter + 10),
